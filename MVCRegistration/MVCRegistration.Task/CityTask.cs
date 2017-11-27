@@ -60,6 +60,13 @@ namespace MVCRegistration.Task
             return Context.Cities.ToList();
         }
 
+        public List<City> GetCityListByStateId(int stateId)
+        {
+            return Context.Cities.Where(x=>x.StateId ==stateId).ToList();
+        }
+
+        
+
         public City GetCity(long Id)
         {
             return Context.Cities.Where(x => x.CityId == Id).FirstOrDefault();

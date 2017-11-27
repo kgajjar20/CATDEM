@@ -18,6 +18,7 @@ namespace MVCRegistration.DBProvider
         public Country()
         {
             this.States = new HashSet<State>();
+            this.Employees = new HashSet<Employee>();
         }
     
         public int CountryId { get; set; }
@@ -25,5 +26,7 @@ namespace MVCRegistration.DBProvider
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<State> States { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

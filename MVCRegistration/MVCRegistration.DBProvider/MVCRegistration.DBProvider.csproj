@@ -57,6 +57,9 @@
     <Compile Include="Country.cs">
       <DependentUpon>MVCRegistration.tt</DependentUpon>
     </Compile>
+    <Compile Include="Employee.cs">
+      <DependentUpon>MVCRegistration.tt</DependentUpon>
+    </Compile>
     <Compile Include="MVCRegistration.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

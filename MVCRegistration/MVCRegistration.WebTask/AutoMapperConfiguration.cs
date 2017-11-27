@@ -27,6 +27,8 @@ namespace MVCRegistration.WebTask
             Mapper.CreateMap<City, CityViewModel>();
             Mapper.CreateMap<CityViewModel, City>();
 
+            Mapper.CreateMap<Employee, EmployeeViewModel>();
+            Mapper.CreateMap<EmployeeViewModel, Employee>();
         }
     }
 }

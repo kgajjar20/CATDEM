@@ -5,24 +5,23 @@ using System.Text;
 using System.Threading.Tasks;
 using MVCRegistration.DBProvider;
 
-
 namespace MVCRegistration.Task
 {
-    public class StateTask : IDisposable
+   public class EmployeeTask :IDisposable
     {
         private readonly MVCRegistrationEntities Context;
 
-        public StateTask()
+        public EmployeeTask()
         {
             Context = new MVCRegistrationEntities();
         }
 
-        public bool AddState(State state)
+        public bool AddEmployee(Employee employee)
         {
             bool IsAdd = false;
             try
             {
-                Context.States.Add(state);
+                Context.Employees.Add(employee);
                 Context.SaveChanges();
                 IsAdd = true;
             }
@@ -34,16 +33,21 @@ namespace MVCRegistration.Task
             return IsAdd;
         }
 
-        public bool UpdateState(State state)
+        public bool UpdateEmployee(Employee employee)
         {
             bool IsUpdate = false;
             try
             {
-                var _state = Context.States.Where(x => x.StateId== state.StateId).FirstOrDefault();
-                _state.StateId= state.StateId;
-                _state.StateName= state.StateName;
-                _state.CountryId = state.CountryId;
-
+                var _employee = Context.Employees.Where(x => x.Id == employee.Id).FirstOrDefault();
+                _employee.Id= employee.Id;
+                _employee.Name= employee.Name;
+                _employee.Address= employee.Address;
+                _employee.Email = employee.Email;
+                _employee.BirthDate = employee.BirthDate;
+                _employee.CountryId = employee.CountryId;
+                _employee.StateId = employee.StateId;
+                _employee.CityId = employee.CityId;
+                _employee.Gender = employee.Gender;
                 Context.SaveChanges();
                 IsUpdate = true;
             }
@@ -55,29 +59,23 @@ namespace MVCRegistration.Task
             return IsUpdate;
         }
 
-        public List<State> GetStateList()
+        public List<Employee> GetEmployeeList()
         {
-            return Context.States.ToList();
+            return Context.Employees.ToList();
         }
 
-        public State GetState(long Id)
+        public Employee GetEmployee(long Id)
         {
-            return Context.States.Where(x => x.StateId== Id).FirstOrDefault();
+            return Context.Employees.Where(x => x.Id == Id).FirstOrDefault();
         }
 
-        public List<State> GetStateListByCountryId(int countryId)
-        {
-            return Context.States.Where(x => x.CountryId == countryId).ToList();
-        }
-
-
-        public bool DeleteState(long Id)
+        public bool DeleteEmployee(long Id)
         {
             bool IsDelete = false;
             try
             {
-                var state = Context.States.Where(x => x.StateId== Id).FirstOrDefault();
-                Context.States.Remove(state);
+                var employee = Context.Employees.Where(x => x.Id == Id).FirstOrDefault();
+                Context.Employees.Remove(employee);
                 Context.SaveChanges();
                 IsDelete = true;
             }

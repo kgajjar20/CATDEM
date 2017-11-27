@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CityViewModel.cs" />
     <Compile Include="CountryViewModel.cs" />
+    <Compile Include="EmployeeViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateViewModel.cs" />
   </ItemGroup>

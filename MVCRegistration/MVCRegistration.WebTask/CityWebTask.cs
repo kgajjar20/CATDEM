@@ -44,6 +44,20 @@ namespace MVCRegistration.WebTask
             }
         }
 
+        public List<CityViewModel> GetCityListByStateId(int stateId)
+        {
+            try
+            {
+                var city = Mapper.Map<List<City>, List<CityViewModel>>(_CityTask.GetCityListByStateId(stateId));
+                return city;
+            }
+            catch (Exception)
+            {
+                return new List<CityViewModel>();
+            }
+        }
+
+
         public CityViewModel GetCity(long Id)
         {
             var city = Mapper.Map<City, CityViewModel>(_CityTask.GetCity(Id));

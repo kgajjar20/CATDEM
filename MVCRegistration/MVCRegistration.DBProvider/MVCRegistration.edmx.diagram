@@ -10,6 +10,10 @@
         <EntityTypeShape EntityType="MVCRegistrationModel.State" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="MVCRegistrationModel.FK_City_State" ManuallyRouted="false" />
         <AssociationConnector Association="MVCRegistrationModel.FK_State_Country" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="MVCRegistrationModel.Employee" Width="1.5" PointX="7.5" PointY="0.75" />
+        <AssociationConnector Association="MVCRegistrationModel.FK_Employee_City" />
+        <AssociationConnector Association="MVCRegistrationModel.FK_Employee_Country" />
+        <AssociationConnector Association="MVCRegistrationModel.FK_Employee_State" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

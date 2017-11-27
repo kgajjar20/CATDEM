@@ -12,20 +12,20 @@ namespace MVCRegistration.DBProvider
     using System;
     using System.Collections.Generic;
     
-    public partial class City
+    public partial class Employee
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public City()
-        {
-            this.Employees = new HashSet<Employee>();
-        }
-    
-        public int CityId { get; set; }
-        public string CityName { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public int CountryId { get; set; }
         public int StateId { get; set; }
+        public int CityId { get; set; }
+        public Nullable<System.DateTime> BirthDate { get; set; }
+        public string Gender { get; set; }
     
+        public virtual City City { get; set; }
+        public virtual Country Country { get; set; }
         public virtual State State { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
     }
 }

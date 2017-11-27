@@ -45,6 +45,19 @@ namespace MVCRegistration.WebTask
             }
         }
 
+        public List<StateViewModel> GetStateListByCountryId(int countryId)
+        {
+            try
+            {
+                var state = Mapper.Map<List<State>, List<StateViewModel>>(_StateTask.GetStateListByCountryId(countryId));
+                return state;
+            }
+            catch (Exception)
+            {
+                return new List<StateViewModel>();
+            }
+        }
+
         public StateViewModel GetState(long Id)
         {
             var state = Mapper.Map<State, StateViewModel>(_StateTask.GetState(Id));
