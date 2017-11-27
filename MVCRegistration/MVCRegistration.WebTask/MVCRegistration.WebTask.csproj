@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoMapperConfiguration.cs" />
+    <Compile Include="CityWebTask.cs" />
     <Compile Include="CountryWebTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateWebTask.cs" />

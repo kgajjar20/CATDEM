@@ -7,16 +7,16 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "AddCountry")
 
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CountryId)
+            @Html.DisplayName("Country Id")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CountryName)
+            @Html.DisplayName("Country Name")
         </th>
         <th></th>
     </tr>
@@ -31,7 +31,6 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.CountryId }) |
-            @Html.ActionLink("Details", "Details", new { id = item.CountryId }) |
             @Html.ActionLink("Delete", "Delete", new {  id=item.CountryId })
         </td>
     </tr>

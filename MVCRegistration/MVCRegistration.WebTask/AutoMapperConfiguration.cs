@@ -24,6 +24,9 @@ namespace MVCRegistration.WebTask
             Mapper.CreateMap<State, StateViewModel>();
             Mapper.CreateMap<StateViewModel, State>();
 
+            Mapper.CreateMap<City, CityViewModel>();
+            Mapper.CreateMap<CityViewModel, City>();
+
         }
     }
 }
