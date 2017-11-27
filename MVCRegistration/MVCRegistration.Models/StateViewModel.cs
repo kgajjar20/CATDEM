@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.ComponentModel.DataAnnotations;
+using MVCRegistration.DBProvider;
 
 namespace MVCRegistration.Models
 {
@@ -19,6 +20,7 @@ namespace MVCRegistration.Models
         public string StateName { get; set; }
         public int CountryId { get; set; }
 
+        public virtual Country Country { get; set; }
         public List<SelectListItem> lstCountry { get; set; }
 
 
