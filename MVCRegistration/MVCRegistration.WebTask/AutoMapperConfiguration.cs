@@ -20,6 +20,10 @@ namespace MVCRegistration.WebTask
         {
             Mapper.CreateMap<Country, CountryViewModel>();
             Mapper.CreateMap<CountryViewModel, Country>();
+
+            Mapper.CreateMap<State, StateViewModel>();
+            Mapper.CreateMap<StateViewModel, State>();
+
         }
     }
 }

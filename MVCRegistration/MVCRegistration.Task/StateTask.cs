@@ -5,23 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 using MVCRegistration.DBProvider;
 
+
 namespace MVCRegistration.Task
 {
-    public class CountryTask : IDisposable
+    public class StateTask : IDisposable
     {
         private readonly MVCRegistrationEntities Context;
 
-        public CountryTask()
+        public StateTask()
         {
             Context = new MVCRegistrationEntities();
         }
 
-        public bool AddCountry(Country country)
+        public bool AddState(State state)
         {
             bool IsAdd = false;
             try
             {
-                Context.Countries.Add(country);
+                Context.States.Add(state);
                 Context.SaveChanges();
                 IsAdd = true;
             }
@@ -33,14 +34,15 @@ namespace MVCRegistration.Task
             return IsAdd;
         }
 
-        public bool UpdateCountry(Country country)
+        public bool UpdateState(State state)
         {
             bool IsUpdate = false;
             try
             {
-                var _country = Context.Countries.Where(x => x.CountryId== country.CountryId).FirstOrDefault();
-                _country.CountryId= country.CountryId;
-                _country.CountryName= country.CountryName;
+                var _state = Context.States.Where(x => x.StateId== state.StateId).FirstOrDefault();
+                _state.StateId= state.StateId;
+                _state.StateName= state.StateName;
+                _state.CountryId = state.CountryId;
 
                 Context.SaveChanges();
                 IsUpdate = true;
@@ -53,23 +55,23 @@ namespace MVCRegistration.Task
             return IsUpdate;
         }
 
-        public List<Country> GetCountryList()
+        public List<State> GetStateList()
         {
-            return Context.Countries.ToList();
+            return Context.States.ToList();
         }
 
-        public Country GetCountry(long Id)
+        public State GetState(long Id)
         {
-            return Context.Countries.Where(x => x.CountryId == Id).FirstOrDefault();
+            return Context.States.Where(x => x.StateId== Id).FirstOrDefault();
         }
 
-        public bool DeleteCountry(long Id)
+        public bool DeleteState(long Id)
         {
             bool IsDelete = false;
             try
             {
-                var country = Context.Countries.Where(x => x.CountryId== Id).FirstOrDefault();
-                Context.Countries.Remove(country);
+                var state = Context.States.Where(x => x.StateId== Id).FirstOrDefault();
+                Context.States.Remove(state);
                 Context.SaveChanges();
                 IsDelete = true;
             }

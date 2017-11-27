@@ -8,40 +8,46 @@ using MVCRegistration.Models;
 
 namespace MVCRegistration.Controllers
 {
-    public class CountryController : Controller
+    public class StateController : Controller
     {
 
         private readonly CountryWebTask _countryWebTask;
+        private readonly StateWebTask _stateWebTask;
 
-        public CountryController()
+
+        public StateController()
         {
             _countryWebTask = new CountryWebTask();
+            _stateWebTask = new StateWebTask();
         }
 
         // GET: Cource
         public ActionResult Index()
         {
-            var countryList = _countryWebTask.GetCountryList();
-            return View(countryList);
+            var stateList = _stateWebTask.GetStateList();
+            return View(stateList);
         }
-        public JsonResult GetCountryList()
+
+        public List<SelectListItem> GetCountryList()
         {
-            List<CountryViewModel> lstModel = new List<CountryViewModel>();
+            List<SelectListItem> lstCountryList = new List<SelectListItem>();
             var data = _countryWebTask.GetCountryList();
-
-            lstModel = data.Select(x => new CountryViewModel
+            lstCountryList = data.Select(x => new SelectListItem
             {
-                CountryId = x.CountryId,
-                CountryName = x.CountryName,
+                Text = x.CountryName,
+                Value = x.CountryId.ToString(),
             }).ToList();
-            return Json(lstModel, JsonRequestBehavior.AllowGet);
+
+            return lstCountryList;
         }
 
-        public ActionResult AddCountry()
+        public ActionResult AddState()
         {
             try
             {
-                CountryViewModel model = new CountryViewModel();
+                StateViewModel model = new StateViewModel();
+                model.lstCountry = GetCountryList();
+
                 return View(model);
             }
             catch (Exception ex)
@@ -50,22 +56,24 @@ namespace MVCRegistration.Controllers
             }
         }
         [HttpPost]
-        public ActionResult AddCountry(CountryViewModel model)
+        public ActionResult AddState(StateViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _countryWebTask.AddCountry(model);
+                    _stateWebTask.AddState(model);
                     return RedirectToAction("Index");
                 }
                 else
                 {
+                    model.lstCountry = GetCountryList();
                     return View(model);
                 }
             }
             catch (Exception ex)
             {
+                model.lstCountry = GetCountryList();
                 return View(model);
             }
         }
@@ -76,7 +84,8 @@ namespace MVCRegistration.Controllers
             {
                 if (Id > 0)
                 {
-                    var model = _countryWebTask.GetCountry(Id);
+                    var model = _stateWebTask.GetState(Id);
+                    model.lstCountry = GetCountryList();
                     return View(model);
                 }
                 else
@@ -90,13 +99,13 @@ namespace MVCRegistration.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Edit(CountryViewModel model)
+        public ActionResult Edit(StateViewModel model)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _countryWebTask.UpdateCountry(model);
+                    _stateWebTask.UpdateState(model);
                     return RedirectToAction("Index");
                 }
                 else
@@ -112,7 +121,7 @@ namespace MVCRegistration.Controllers
 
         public ActionResult Delete(int Id)
         {
-            _countryWebTask.DeleteCountry(Id);
+            _stateWebTask.DeleteState(Id);
             return RedirectToAction("Index");
         }
 
