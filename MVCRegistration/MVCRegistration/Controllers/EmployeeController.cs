@@ -222,6 +222,5 @@ namespace MVCRegistration.Controllers
             _EmployeeWebTask.DeleteEmployee(Id);
             return RedirectToAction("Index");
         }
-
     }
 }

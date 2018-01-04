@@ -1,6 +1,7 @@
 ﻿using MVCRegistration.DBProvider;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +25,8 @@ namespace MVCRegistration.Models
         public int CountryId { get; set; }
         public int StateId { get; set; }
         public int CityId { get; set; }
+        [Display(Name = "Date Of Birth")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MMM/yyyy}")]
         public DateTime? BirthDate { get; set; }
         public string Gender { get; set; }
 
